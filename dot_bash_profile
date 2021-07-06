@@ -1,0 +1,8 @@
+#
+# ~/.bash_profile
+#
+
+export PATH=$PATH:/home/richard/executables
+export EDITOR=vim
+setleds -D +num
+[[ -f ~/.bashrc ]] && . ~/.bashrc

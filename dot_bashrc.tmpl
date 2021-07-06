@@ -1,0 +1,20 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# general config
+alias ls='ls --color=auto'
+alias gs='git status'
+PS1='[\u@\h \W]\$ '
+
+# specific config
+{{ if (eq .chezmoi.hostname "rich-desktop") }}
+alias up='doas pacman -Syu'
+alias removeorphans='doas pacman -Rn $(pacman -Qqdt)'
+{{ else if (eq .chezmoi.hostname "rich-rog") }}
+alias up='doas dnf upgrade'
+alias removeorphans='doas dnf autoremove'
+{{ end }}
