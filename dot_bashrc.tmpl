@@ -5,6 +5,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+umask 0022
+
 # general config
 alias ls='ls --color=auto'
 alias gs='git status'
