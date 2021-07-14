@@ -19,6 +19,7 @@ order += "battery all"
 order += "disk /"
 order += "load"
 order += "memory"
+order += "volume master"
 order += "tztime local"
 {{end}}
 ethernet _first_ {
@@ -48,11 +49,17 @@ load {
 }
 
 memory {
-        format = "%used | %available"
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY: %free"
+    format = "%used | %available"
+    threshold_degraded = "1G"
+    format_degraded = "MEMORY: %free"
+}
+
+volume master {
+    format = " %volume"
+    format_muted = " %volume"
+    device = "pulse:49"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+    format = "%Y-%m-%d %H:%M:%S"
 }
