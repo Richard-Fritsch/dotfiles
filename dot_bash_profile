@@ -2,7 +2,12 @@
 # ~/.bash_profile
 #
 
+# Variables setup
 export PATH=$PATH:/home/richard/executables
 export EDITOR=vim
+export NNN_TRASH=1
+export NNN_OPTS="e"
+
 setleds -D +num
+
 [[ -f ~/.bashrc ]] && . ~/.bashrc
