@@ -9,6 +9,9 @@ export NNN_TRASH=1
 export NNN_OPTS="e"
 export NNN_PLUG='i:imgview;p:preview-tui'
 export NNN_FIFO='/tmp/nnn.fifo'
+export OC_CERTBOT___CA_PEM="/home/richard/kz.crt"
+export OC_CERTBOT___CA_KEY="/home/richard/kz.key"
+export OC_CERTBOT___CA_KEY_PASS="pass:1234"
 
 setleds -D +num
 
