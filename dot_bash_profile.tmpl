@@ -5,14 +5,17 @@
 # Variables setup
 export PATH=$PATH:/home/richard/executables
 export EDITOR=vim
+export TERMINAL=alacritty
+export HISTCONTROL='ignoredups'
 export NNN_TRASH=1
-export NNN_OPTS="e"
+export NNN_OPTS='e'
 export NNN_PLUG='i:imgview;p:preview-tui'
 export NNN_FIFO='/tmp/nnn.fifo'
+{{ if ( eq .chezmoi.hostname "rich-rog" ) }}
 export OC_CERTBOT___CA_PEM="/home/richard/kz.crt"
 export OC_CERTBOT___CA_KEY="/home/richard/kz.key"
 export OC_CERTBOT___CA_KEY_PASS="pass:1234"
-
+{{ end }}
 setleds -D +num
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
