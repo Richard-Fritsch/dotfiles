@@ -62,7 +62,7 @@ trap nnn_cd EXIT
 # specific config
 {{ if (eq .chezmoi.hostname "rich-desktop") }}
 alias up='doas pacman -Syu'
-alias removeorphans='doas pacman -Rn $(pacman -Qqdt)'
+alias removeorphans='doas pacman -Rn $(pacman -Qqdt) 2> /dev/null'
 {{ else if (eq .chezmoi.hostname "rich-rog") }}
 alias up='doas dnf upgrade'
 alias removeorphans='doas dnf autoremove'
