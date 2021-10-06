@@ -64,6 +64,6 @@ trap nnn_cd EXIT
 alias up='doas pacman -Syu'
 alias removeorphans='doas pacman -Rn $(pacman -Qqdt)'
 {{ else if (eq .chezmoi.hostname "rich-rog") }}
-alias up='doas dnf upgrade'
+alias up='doas dnf upgrade --refresh'
 alias removeorphans='doas dnf autoremove'
 {{ end }}
