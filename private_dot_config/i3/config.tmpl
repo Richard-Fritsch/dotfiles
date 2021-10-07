@@ -143,12 +143,15 @@ assign [class="^discord$"] → $ws2
 assign [class="^Thunderbird$"] → $ws2
 assign [class="^firefox$"] → $ws4
 assign [class="^Tor Browser$"] → $ws4
+assign [class="^brave-browser$"] → $ws4
+assign [class="^bitwarden$"] → $ws4
 for_window [class="Spotify"] move --no-auto-back-and-forth container to workspace $ws5
 assign [class="^FreeTube$"] → $ws5
 assign [class="^Joplin$"] → $ws6
 assign [class="^Chromium$"] → $ws6
-assign [class="^Apache NetBeans IDE 12.3$"] → $ws7
+assign [class="^Apache NetBeans IDE 12.5$"] → $ws7
 assign [class="^jetbrains-idea-ce$"] → $ws7
+assign [class="^codeblocks$"] → $ws7
 
 # scroll through workspaces
 bindsym $mod+x workspace prev_on_output
