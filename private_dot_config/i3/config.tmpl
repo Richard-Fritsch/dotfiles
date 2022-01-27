@@ -218,7 +218,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-{{ if ( eq .chezmoi.hostname "rich-desktop" )}}bindsym Control_L+Shift_L+Meta_L+Super_L+Return mode "$mode_system"
+{{ if ( eq .chezmoi.hostname "rich-desktop" )}}bindsym control+shift+mod1+mod4+Return mode "$mode_system"
 {{ else if ( eq .chezmoi.hostname "rich-rog" )}}bindsym $mod+Delete mode "$mode_system"{{end}}
 
 for_window [class=".*"] border pixel 2
@@ -279,17 +279,14 @@ workspace $ws9 output DP-4
 workspace $ws10 output DP-3
 
 # Launch applications on startup/restart 
-exec_always xrandr --output DP-4 --mode 1920x1080 \
---rate 144 --primary --output DP-3 --mode 1920x1080 \
---left-of DP-4
-exec_always feh --bg-scale \
-/home/richard/Pictures/alena-aenami-eclipse-1k.jpg
+exec_always xrandr --output DP-4 --mode 1920x1080 --rate 144 --primary \
+--output DP-3 --mode 1920x1080 --left-of DP-4
+exec_always feh --bg-scale /home/richard/Pictures/alena-aenami-eclipse-1k.jpg
 exec /usr/bin/dropbox &
 exec /usr/bin/redshift -l 50:14 &
 exec systemctl --user start duplicati.service
 exec thunderbird
 exec firefox
-exec torbrowser-launcher
 exec picom -b
 {{ else if (eq .chezmoi.hostname "rich-rog") }}
 # Launch applications on startup/restart 
