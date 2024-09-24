@@ -1,0 +1,314 @@
+# Sway Config
+
+# Include configuration for setting XDG envvars
+include /etc/sway/config.d/*
+
+# set the modifier variable
+set $mod Mod4
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Set variables for system colors
+set $gray "#928374"
+set $black "#282828"
+set $wheat "#ebdbb2"
+set $darkseagreen "#689d6a"
+set $black1 "#1d2021"
+set $darkslategray "#32302f"
+set $firebrick "#cc241d"
+
+# Set variables for outputs
+set $primary "Ancor Communications Inc VG248 HBLMQS065639"
+set $secondary "BNQ BenQ GW2265 XAE01978019"
+
+# set system font
+font DejaVu Sans Mono 11
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up k
+set $down j
+set $left h
+set $right l
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec footclient
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start j4-dmenu with bemenu as backend (a program launcher)
+set $bemenu bemenu -H 24 --fn "DejaVu Sans Mono 11" -i --scrollbar autohide --nb $black --tb $firebrick --hb $darkseagreen --fb $black --tf $wheat --nf $wheat --hf $black --ff $gray
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu='$bemenu' --term="alacritty" --no-generic
+
+# change focus
+bindsym --to-code {
+    $mod+$left focus left
+    $mod+$down focus down
+    $mod+$up focus up
+    $mod+$right focus right
+}
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym --to-code {
+    $mod+Shift+$left move left
+    $mod+Shift+$down move down
+    $mod+Shift+$up move up
+    $mod+Shift+$right move right
+}
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+o split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+f focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Desktop key bindings
+#set $desksink "alsa_output.pci-0000_00_1f.3.analog-stereo"
+#set $desksource "alsa_input.pci-0000_00_1f.3.analog-stereo"
+#bindsym $mod+F1 exec --no-startup-id pactl set-sink-mute $desksink toggle
+#bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume $desksink -5%
+#bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume $desksink +5%
+#bindsym $mod+F4 exec --no-startup-id pactl set-source-mute $desksource toggle
+
+
+# switch to workspace
+bindsym --to-code {
+    $mod+1 workspace number $ws1
+    $mod+2 workspace number $ws2
+    $mod+3 workspace number $ws3
+    $mod+4 workspace number $ws4
+    $mod+5 workspace number $ws5
+    $mod+6 workspace number $ws6
+    $mod+7 workspace number $ws7
+    $mod+8 workspace number $ws8
+    $mod+9 workspace number $ws9
+    $mod+0 workspace number $ws10
+}
+
+# move focused container to workspace
+bindsym --to-code {
+    $mod+Shift+1 move container to workspace number $ws1
+    $mod+Shift+2 move container to workspace number $ws2
+    $mod+Shift+3 move container to workspace number $ws3
+    $mod+Shift+4 move container to workspace number $ws4
+    $mod+Shift+5 move container to workspace number $ws5
+    $mod+Shift+6 move container to workspace number $ws6
+    $mod+Shift+7 move container to workspace number $ws7
+    $mod+Shift+8 move container to workspace number $ws8
+    $mod+Shift+9 move container to workspace number $ws9
+    $mod+Shift+0 move container to workspace number $ws10
+}
+
+# Launch certain apps in designated workspaces
+#assign [class="^Steam$"] → $ws1
+#assign [class="^discord$"] → $ws2
+#assign [class="^Thunderbird$"] → $ws2
+#assign [class="^firefox$"] → $ws4
+#assign [class="^Tor Browser$"] → $ws4
+#assign [class="^brave-browser$"] → $ws4
+#assign [class="^bitwarden$"] → $ws4
+#assign [class="^FreeTube$"] → $ws5
+#assign [class="^Joplin$"] → $ws6
+#assign [class="^Chromium$"] → $ws6
+#assign [class="^Apache NetBeans IDE 12.5$"] → $ws7
+#assign [class="^jetbrains-idea-ce$"] → $ws7
+#assign [class="^codeblocks$"] → $ws7
+
+# scroll through workspaces
+bindsym $mod+x workspace prev_on_output
+bindsym $mod+c workspace next_on_output
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# exit sway (logs you out of your X session)
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'sway-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym --to-code {
+        $left           resize shrink width 20 ppt
+        $down           resize grow height 20 ppt
+        $up             resize shrink height 20 ppt
+        $right          resize grow width 20 ppt
+        Shift+$left     resize shrink width 10 ppt
+        Shift+$down     resize grow height 10 ppt
+        Shift+$up       resize shrink height 10 ppt
+        Shift+$right    resize grow width 10 ppt
+    }
+
+    # same bindings, but for the arrow keys
+    bindsym Left            resize shrink width 20 ppt
+    bindsym Down            resize grow height 20 ppt
+    bindsym Up              resize shrink height 20 ppt
+    bindsym Right           resize grow width 20 ppt
+    bindsym Shift+Left      resize shrink width 10 ppt
+    bindsym Shift+Down      resize grow height 10 ppt
+    bindsym Shift+Up        resize shrink height 10 ppt
+    bindsym Shift+Right     resize grow width 10 ppt
+
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# take screenshot
+#bindsym Print exec "flameshot gui"
+
+# Shutdown, reboot etc.
+set $Locker swaylock --color=282828 -f && sleep 1
+set $mode_system System: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id swaymsg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym control+shift+mod1+mod4+Return mode "$mode_system"
+
+for_window [class=".*"] border pixel 2
+
+focus_on_window_activation smart
+#no_focus [workspace=__focused__]
+
+
+# Color customization
+#class                 	border			backgr.			text	indicator	child_border
+client.focused          $darkseagreen	        $darkseagreen	        $black	$black		$darkseagreen
+client.focused_inactive $black1			$black1			$gray	$black		$black1
+client.unfocused        $darkslategray	        $darkslategray	        $gray	$black		$darkslategray
+client.urgent           $firebrick		$firebrick		$wheat	$black		$firebrick
+
+# Start swaybar to display a workspace bar (plus the system information swaystatus
+# finds out, if available)
+bar {
+    status_command i3blocks
+    font DejaVu Sans Mono 11
+    tray_output *
+
+    position top
+    colors {
+	background $black
+        statusline $wheat
+        separator $gray
+
+#	colorclass 		border 		background 	text
+        focused_workspace  	$darkseagreen 	$darkseagreen	$black
+        active_workspace  	$black1		$black1		$gray 
+        inactive_workspace 	$darkslategray	$darkslategray	$gray
+        urgent_workspace 	$firebrick	$firebrick	$wheat
+	}
+}
+
+# Move workspaces to the desired screen
+workspace $ws1 output $primary
+workspace $ws2 output $secondary
+workspace $ws3 output $primary
+workspace $ws4 output $primary
+workspace $ws5 output $secondary
+workspace $ws6 output $primary
+workspace $ws7 output $primary
+workspace $ws8 output $primary
+workspace $ws9 output $primary
+workspace $ws10 output $secondary
+
+# Enable float
+for_window [title="Firefox - Sharing Indicator"] floating enable
+
+# Keyboard config
+input "type:keyboard" {
+    xkb_layout us,cz
+    xkb_options grp:win_space_toggle
+}
+
+# Disable XWayland
+#xwayland disable
+
+# Idle
+exec swayidle -w \
+    timeout 1000 'swaylock -f -c 282828' \
+    timeout 900 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"'
+
+# Launch applications on startup/restart 
+output $secondary pos 0 0 mode 1920x1080
+output $primary pos 1920 0 mode 1920x1080@60Hz
+output "*" bg ~/pictures/alena-aenami-eclipse-1k.jpg fill
+exec /usr/bin/gammastep -b 1.0:0.85
+exec /usr/bin/dunst
+exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+
+# Floating windows
+for_window [title="Measure properties for measure.*" app_id="org.musescore.MuseScore"] floating enable
+for_window [title="Transpose" app_id="org.musescore.MuseScore"] floating enable
+for_window [title="Export" app_id="mscore"] floating enable
+for_window [title="About Tor Browser" app_id="Tor Browser"] floating enable
+for_window [title="Save score" app_id="mscore"] floating enable

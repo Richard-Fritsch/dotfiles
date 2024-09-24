@@ -1,0 +1,12 @@
+# Download options
+--concurrent-fragments 4
+--retries 5
+-o "~/downloads/yt-dlp/%(title)s.%(ext)s"
+
+# Filesystem options
+--restrict-filenames
+--no-overwrites
+
+# Verbosity options
+--progress
+--console-title

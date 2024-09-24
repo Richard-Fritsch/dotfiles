@@ -1,0 +1,3 @@
+[date]
+command=date "+%F %T"
+interval=1

@@ -1,0 +1,3 @@
+auto-reload yes
+reload-threads 4
+browser /usr/bin/firefox

@@ -1,0 +1,24 @@
+alias cp='cp -i'
+alias mv='mv -i'
+alias sway='~/scripts/sway-wrapper.sh'
+alias ls='ls --color=auto'
+alias ll='ls -la'
+alias gs='git status'
+alias grep='grep --color=auto'
+alias locate='locate -i'
+
+# Trash
+alias tput='trash-put'
+alias tempty='trash-empty'
+alias tlist='trash-list'
+alias trestore='trash-restore'
+alias tremove='trash-remove'
+
+# Pacman
+alias up='sudo pacman -Syu'
+alias removeorphans='sudo pacman -Rns $(pacman -Qqdt)'
+alias pacsearch='pacman -Ss'
+
+# Other
+alias hehe='gocryptfs -noprealloc ~/pictures/encrypted ~/pictures/encrypted-mount'
+alias unhehe='fusermount -u ~/pictures/encrypted-mount'

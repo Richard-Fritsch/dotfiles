@@ -1,0 +1,32 @@
+# Environment variables
+export DIFFPROG="/usr/bin/nvim -d"
+export EDITOR="/usr/bin/nvim"
+export HISTCONTROL="ignoredups"
+export TERMINAL="/usr/bin/alacritty"
+#export ELECTRON_OZONE_PLATFORM_HINT="auto"
+export MOZ_ENABLE_WAYLAND=1
+
+# XDG
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# NNN
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_OPTS="e"
+export NNN_PLUG="i:imgview;p:preview-tui"
+export NNN_TRASH=1
+
+# Restic
+export RESTIC_REPOSITORY="/home/admin/backup-drive/restic-repo"
+export RESTIC_PASSWORD_FILE="/home/admin/.restic-password"
+export RESTIC_PROGRESS_FPS=5
+
+# Zsh
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+# Aurutils
+export AUR_PAGER="nnn"
+
+# Whipper
+export WHIPPER_DEBUG="WARNING"

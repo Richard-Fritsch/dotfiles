@@ -1,0 +1,2 @@
+BEETS_LIBRARY='~/.local/share/beets/library.db'
+BEETS_CONFIG='/home/admin/.config/beets/config.yaml'
