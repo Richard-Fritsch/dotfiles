@@ -1,6 +1,6 @@
 # Download options
 --concurrent-fragments 4
---retries 5
+--retries 3
 -o "~/downloads/yt-dlp/%(title)s.%(ext)s"
 
 # Filesystem options

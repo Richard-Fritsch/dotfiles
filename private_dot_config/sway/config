@@ -116,15 +116,6 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-# Desktop key bindings
-#set $desksink "alsa_output.pci-0000_00_1f.3.analog-stereo"
-#set $desksource "alsa_input.pci-0000_00_1f.3.analog-stereo"
-#bindsym $mod+F1 exec --no-startup-id pactl set-sink-mute $desksink toggle
-#bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume $desksink -5%
-#bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume $desksink +5%
-#bindsym $mod+F4 exec --no-startup-id pactl set-source-mute $desksource toggle
-
-
 # switch to workspace
 bindsym --to-code {
     $mod+1 workspace number $ws1
@@ -152,21 +143,6 @@ bindsym --to-code {
     $mod+Shift+9 move container to workspace number $ws9
     $mod+Shift+0 move container to workspace number $ws10
 }
-
-# Launch certain apps in designated workspaces
-#assign [class="^Steam$"] → $ws1
-#assign [class="^discord$"] → $ws2
-#assign [class="^Thunderbird$"] → $ws2
-#assign [class="^firefox$"] → $ws4
-#assign [class="^Tor Browser$"] → $ws4
-#assign [class="^brave-browser$"] → $ws4
-#assign [class="^bitwarden$"] → $ws4
-#assign [class="^FreeTube$"] → $ws5
-#assign [class="^Joplin$"] → $ws6
-#assign [class="^Chromium$"] → $ws6
-#assign [class="^Apache NetBeans IDE 12.5$"] → $ws7
-#assign [class="^jetbrains-idea-ce$"] → $ws7
-#assign [class="^codeblocks$"] → $ws7
 
 # scroll through workspaces
 bindsym $mod+x workspace prev_on_output
@@ -214,9 +190,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# take screenshot
-#bindsym Print exec "flameshot gui"
-
 # Shutdown, reboot etc.
 set $Locker swaylock --color=282828 -f && sleep 1
 set $mode_system System: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
@@ -237,8 +210,6 @@ bindsym control+shift+mod1+mod4+Return mode "$mode_system"
 for_window [class=".*"] border pixel 2
 
 focus_on_window_activation smart
-#no_focus [workspace=__focused__]
-
 
 # Color customization
 #class                 	border			backgr.			text	indicator	child_border
@@ -280,31 +251,20 @@ workspace $ws8 output $primary
 workspace $ws9 output $primary
 workspace $ws10 output $secondary
 
-# Enable float
-for_window [title="Firefox - Sharing Indicator"] floating enable
-
 # Keyboard config
 input "type:keyboard" {
     xkb_layout us,cz
     xkb_options grp:win_space_toggle
 }
 
-# Disable XWayland
-#xwayland disable
-
-# Idle
-exec swayidle -w \
-    timeout 1000 'swaylock -f -c 282828' \
-    timeout 900 'swaymsg "output * power off"' \
-    resume 'swaymsg "output * power on"'
-
 # Launch applications on startup/restart 
 output $secondary pos 0 0 mode 1920x1080
 output $primary pos 1920 0 mode 1920x1080@60Hz
-output "*" bg ~/pictures/alena-aenami-eclipse-1k.jpg fill
+output "*" bg ~/pictures/wallpapers/alena-aenami-eclipse-1k.jpg fill
 exec /usr/bin/gammastep -b 1.0:0.85
 exec /usr/bin/dunst
 exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec /usr/bin/swayidle
 
 # Floating windows
 for_window [title="Measure properties for measure.*" app_id="org.musescore.MuseScore"] floating enable
@@ -312,3 +272,4 @@ for_window [title="Transpose" app_id="org.musescore.MuseScore"] floating enable
 for_window [title="Export" app_id="mscore"] floating enable
 for_window [title="About Tor Browser" app_id="Tor Browser"] floating enable
 for_window [title="Save score" app_id="mscore"] floating enable
+for_window [title="Firefox - Sharing Indicator"] floating enable
